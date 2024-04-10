@@ -82,3 +82,13 @@ label.label input[type="file"] {
 .message {
   color: #ffffff;
 }
+.loading {
+  /* height: 480px;
+  width: 640px; */
+  /* background-color: #ffffff; */
+  opacity: 0.5;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
