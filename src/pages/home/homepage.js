@@ -9,6 +9,7 @@ export const Homepage = () => {
   const canvasRef = useRef(null);
   const inputRef = useRef(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, SetIsLoading] = useState(false);
 
   const [selectedImg, setSelectedImg] = useState(new Image());
   const [selectedFile, setSelectedFile] = useState(null);
@@ -20,6 +21,7 @@ export const Homepage = () => {
     console.log("la");
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
+    setErrorMessage(null);
 
     //bbx
 
@@ -47,6 +49,7 @@ export const Homepage = () => {
     var fileData = new FormData();
     fileData.append("file", selectedImg);
     try {
+      SetIsLoading(true);
       //const imageSrc = webcamRef.current.getScreenshot();
       //setVideo(imageSrc);
       const url = `https://handgestureserver.onrender.com/predict`;
@@ -64,6 +67,7 @@ export const Homepage = () => {
       if (data) {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
+        SetIsLoading(false);
         drawRect(
           selectedFile,
           data[0].box[0],
@@ -76,6 +80,7 @@ export const Homepage = () => {
         );
       }
     } catch (err) {
+      SetIsLoading(false);
       console.log(err);
       setErrorMessage(err.message);
     }
@@ -126,7 +131,10 @@ export const Homepage = () => {
             <span>Import your image</span>
           </label>
         )}
+
         <canvas ref={canvasRef} />
+        {isLoading ? <div className="loading">Loading...</div> : null}
+
         {renderErrorMessage()}
       </div>
     </div>
