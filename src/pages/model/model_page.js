@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
-import "./homepage.css";
+import styles from "./model_page.module.css";
 import axios from "axios";
 import { drawRect } from "../../utilities/utilities";
 
-export const Homepage = () => {
+export const ModelPage = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const inputRef = useRef(null);
@@ -59,11 +59,6 @@ export const Homepage = () => {
         },
       });
       setErrorMessage(null);
-      // console.log(data);
-      // console.log(data[0].box[0]);
-      // console.log(data[0].box[1]);
-      // console.log(data[0].box[2]);
-      // console.log(data[0].box[3]);
       if (data) {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
@@ -89,7 +84,7 @@ export const Homepage = () => {
     return (
       <div>
         {errorMessage ? (
-          <h1 className="message">
+          <h1 className={styles.message}>
             Something went wrong. Please wait a minute and try again.
           </h1>
         ) : null}
@@ -97,31 +92,31 @@ export const Homepage = () => {
     );
   };
   return (
-    <div className="container">
+    <div className={styles.container}>
       <div>
-        <p className="text">
+        <p className={styles.text}>
           HGR, <br /> Hand Gesture <br /> Regconition
         </p>
         {selectedFile ? (
           <div>
-            <label className="label">
+            <label className={styles.label}>
               <input
                 ref={inputRef}
                 type="file"
                 required
                 onChange={handleChange}
               />
-              <span>Import your image</span>
+              <span>Import new image</span>
             </label>
-            <button onClick={predict} className="label">
-              predict
+            <button onClick={predict} className={styles.label}>
+              Predict
             </button>
           </div>
         ) : null}
       </div>
-      <div className="imageSec">
+      <div className={styles.imageSec}>
         {selectedFile ? null : (
-          <label className="label">
+          <label className={styles.label}>
             <input
               ref={inputRef}
               type="file"
@@ -133,7 +128,7 @@ export const Homepage = () => {
         )}
 
         <canvas ref={canvasRef} />
-        {isLoading ? <div className="loading">Loading...</div> : null}
+        {isLoading ? <div className={styles.loading}>Loading...</div> : null}
 
         {renderErrorMessage()}
       </div>
