@@ -1,0 +1,22 @@
+.mainContainer {
+  background-color: transparent;
+  height: auto;
+  position: absolute;
+  top: 0;
+  padding-left: 96px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+}
+.txtWeb {
+  color: white;
+  font-size: 32px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+.txtNav {
+  color: white;
+  font-size: 20px;
+  padding-left: 50px;
+  text-decoration: none;
+}
