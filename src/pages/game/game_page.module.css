@@ -1,0 +1,71 @@
+.mainContainer {
+  width: 100%;
+  height: 100vh;
+  background: url("../../assets/imgs/homeBg.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 85%;
+}
+
+.gameCanvas {
+  /* flex: 1; */
+  height: 100%;
+}
+
+.webcamButton {
+  position: absolute;
+  top: 50%;
+  left: 24.3%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #1c69db;
+  border-radius: 30px;
+  height: 62px;
+  width: 207px;
+  border: transparent;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 25px; /* Increased font size for better visibility */
+}
+
+.liveView {
+  /* flex: 1; */
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.webcam,
+.output_canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.gesture_output {
+  position: absolute;
+  bottom: 10px; /* Adjust bottom spacing */
+  left: 10px; /* Adjust left spacing */
+  text-align: left;
+}
+
+.game_statistics {
+  position: absolute;
+  bottom: 10px; /* Adjust bottom spacing */
+  right: 10px; /* Adjust right spacing */
+  text-align: right; /* Align text to the right */
+}

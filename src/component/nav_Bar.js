@@ -7,11 +7,14 @@ export const NavBar = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <NavLink to="/" exact={true} className={styles.txtWeb}>
-        Webname
+      <NavLink to="/" className={styles.txtWeb}>
+        Henzesture
       </NavLink>
-      <NavLink to="/about" exact={true} className={styles.txtNav}>
+      <NavLink to="/about" className={styles.txtNav}>
         About us
+      </NavLink>
+      <NavLink to="/game" className={styles.txtNav}>
+        Game
       </NavLink>
     </div>
   );
