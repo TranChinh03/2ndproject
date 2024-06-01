@@ -175,13 +175,13 @@ const GamePage = () => {
     letterImages.yes.src = require("../../assets/imgs/game_imgs/hand_gesture/YES.png");
 
     function drawRoad() {
-      ctx.fillStyle = "#fbfbee";
+      ctx.fillStyle = "#17a1be";
       ctx.fillRect(0, 0, width, height);
 
       ctx.fillStyle = colors.gray;
       ctx.fillRect(150, 0, roadWidth, height);
 
-      ctx.fillStyle = colors.yellow;
+      ctx.fillStyle = colors.white;
       ctx.fillRect(145, 0, markerWidth, height);
       ctx.fillRect(345, 0, markerWidth, height);
     }
@@ -191,7 +191,7 @@ const GamePage = () => {
       if (laneMarkerMoveY >= markerHeight * 2) {
         laneMarkerMoveY = 0;
       }
-      ctx.fillStyle = colors.white;
+      ctx.fillStyle = colors.yellow;
       for (let y = markerHeight * -2; y < height; y += markerHeight * 2) {
         ctx.fillRect(
           width / 2 - markerWidth / 2,
@@ -227,20 +227,20 @@ const GamePage = () => {
     function drawScore() {
       ctx.font = "16px Arial";
       ctx.fillStyle = "#000000";
-      ctx.fillText(`Điểm số: ${Math.round(score * 100) / 100}`, 50, 50);
-      ctx.fillText(`Tốc độ: ${Math.round(speed * 100) / 100}`, 50, 70);
+      ctx.fillText(`Score: ${Math.round(score * 100) / 100}`, 50, 50);
+      ctx.fillText(`Speed: ${Math.round(speed * 100) / 100}`, 50, 70);
     }
 
     function drawWord() {
       ctx.font = "20px Arial";
       ctx.fillStyle = "#000000";
-      ctx.fillText(`Bạn cần gõ chữ: ${currentWord}`, width / 2 - 80, 50);
+      ctx.fillText(`You need to type: ${currentWord}`, width / 2 - 80, 50);
     }
 
     function drawTypedWord() {
       ctx.font = "20px Arial";
       ctx.fillStyle = "#000000";
-      ctx.fillText(`Đã gõ: ${typedWord}`, 20, 100);
+      ctx.fillText(`Your typing: ${typedWord}`, 20, 100);
 
       let xPos = 20;
       let nextCharacter = currentWord[typedWord.length];
@@ -281,7 +281,9 @@ const GamePage = () => {
 
     function gameBegin() {
       ctx.fillStyle = "#fff";
-      ctx.fillText("Sử dụng Có để bắt đầu!", width / 2 - 160, 100);
+      ctx.fillRect(width / 2 - 250, 37, 500, 100);
+      ctx.fillStyle = "#000";
+      ctx.fillText("Use the YES hand sign to begin!", width / 2 - 200, 100);
       ctx.fillStyle = "#fff";
       const image = letterImages["yes"];
       ctx.drawImage(image, 220, 180, 80, 80);
@@ -400,13 +402,11 @@ const GamePage = () => {
     ////
     const loadPromises = Object.values(letterImages).map((img) => {
       return new Promise((resolve) => {
-        console.log("k");
         img.onload = resolve;
       });
     });
 
     Promise.all(loadPromises).then(() => {
-      console.log("kk");
       // Draw the start screen once all images are loaded
       drawStartScreen(ctx);
     });
@@ -424,13 +424,13 @@ const GamePage = () => {
     }
     detect.init(callback);
 
-    const webcamButton = document.getElementById("webcamButton");
+    const startBtn = document.getElementById("startBtn");
     const liveView = document.getElementById("liveView");
 
-    webcamButton.addEventListener("click", () => {
+    startBtn.addEventListener("click", () => {
       console.log("click");
       liveView.style.display = "block";
-      webcamButton.style.display = "none";
+      startBtn.style.display = "none";
 
       gameBegin(ctx);
     });
@@ -440,35 +440,34 @@ const GamePage = () => {
   return (
     <div className={styles.mainContainer}>
       <>
+        <p className={styles.instructionsTxt}>
+          <b>HOW TO PLAY: </b>Press start, then use hand gestures in front of
+          the camera to control the car!
+        </p>
+      </>
+      <>
         <div className={styles.container}>
           <canvas ref={canvasRef} className={styles.gameCanvas} />
           <div id="liveView" className={styles.liveView}>
-            <div>
-              <video
-                id="webcam"
-                className={styles.webcam}
-                autoPlay
-                playsInline
-              ></video>
-              <canvas
-                id="output_canvas"
-                className={styles.output_canvas}
-                width="1280"
-                height="720"
-              />
-            </div>
+            {/* <div> */}
+            <video id="webcam" className={styles.webcam} autoPlay playsInline />
+            {/* <canvas
+              id="output_canvas"
+              className={styles.output_canvas}
+              width="1280"
+              height="720"
+            /> */}
+            {/* </div> */}
           </div>
         </div>
       </>
 
-      <button id="webcamButton" className={styles.webcamButton}>
-        Bắt đầu
+      <button id="startBtn" className={styles.startBtn}>
+        Start
       </button>
 
       <>
-        <div id="gesture_output" className={styles.gesture_output}>
-          <p>Nhấn bắt đầu sau đó cho tay lên màn hình !</p>
-        </div>
+        <div id="gesture_output" className={styles.gesture_output} />
       </>
     </div>
   );
