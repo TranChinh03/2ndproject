@@ -17,7 +17,7 @@ export const AboutPage = () => {
             <div className={styles.txtContainer}>
               <p className={styles.label}>ABOUT US</p>
               <p className={styles.detail}>
-                Welcome to <b>Website</b>, We are student of the
+                Welcome to <b> Henzesture</b>, We are student of the
                 <b> 2021 (K16) </b>
                 class at <b>University of Information Technology</b> in Ho Chi
                 Minh city. This website is our 2nd project, developed under the
@@ -31,11 +31,13 @@ export const AboutPage = () => {
             <div className={styles.txtContainer}>
               <p className={styles.label}>ABOUT THIS WEBSITE</p>
               <p className={styles.detail}>
-                Tenweb is a website developed for everyone to apply Artificial
-                Intelligence to real life. The main function is “Hand Gesture
-                Recognition”. Nonetheless, we have tried to develop more
-                interesting functions for you such as “Realtime HGR”, “Control
-                web by hand gesture”. These function are developed base on YOLO
+                <b>Henzesture</b> is a website developed for everyone to apply
+                Artificial Intelligence to real life. The main functions are
+                <b> “Hand Gesture Recognition”</b>
+                and <b>"Car Driving Game"</b>. Nonetheless, we have tried to
+                develop more interesting functions for you such as “Realtime
+                HGR”, “Control web by hand gesture”. These function are
+                developed base on YOLO
               </p>
             </div>
           </div>
