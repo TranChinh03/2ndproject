@@ -7,7 +7,7 @@ export class SLRdetect {
   constructor() {
     this.gestureRecognizer = null;
     this.runningMode = "VIDEO";
-    this.enableWebcamButton = null;
+    this.enablestartBtn = null;
     this.webcamRunning = false;
     this.stream = null;
     this.video = null;
@@ -27,8 +27,8 @@ export class SLRdetect {
 
     await this.createGestureRecognizer();
     if (this.hasGetUserMedia()) {
-      this.enableWebcamButton = document.getElementById("webcamButton");
-      this.enableWebcamButton.addEventListener("click", this.enableCam);
+      this.enablestartBtn = document.getElementById("startBtn");
+      this.enablestartBtn.addEventListener("click", this.enableCam);
     } else {
       console.warn("getUserMedia() is not supported by your browser");
     }
@@ -63,12 +63,12 @@ export class SLRdetect {
 
     if (this.webcamRunning === true) {
       this.webcamRunning = false;
-      this.enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+      this.enablestartBtn.innerText = "ENABLE PREDICTIONS";
       this.video.srcObject.getTracks().forEach((track) => track.stop());
       this.video.srcObject = null;
     } else {
       this.webcamRunning = true;
-      this.enableWebcamButton.innerText = "DISABLE PREDICTIONS";
+      this.enablestartBtn.innerText = "DISABLE PREDICTIONS";
     }
 
     const constraints = {
@@ -99,7 +99,7 @@ export class SLRdetect {
       ).toFixed(2);
       const handedness = this.results.handednesses[0][0].displayName;
       this.gestureOutput.style.display = "block";
-      this.gestureOutput.innerText = `Ký hiệu của bạn: ${categoryName}\n Confidence: ${categoryScore} %\n Handedness: ${handedness}`;
+      this.gestureOutput.innerText = `Your hand gesture: ${categoryName}\n Confidence: ${categoryScore} %\n Handedness: ${handedness}`;
 
       if (categoryName !== "") {
         if (this.lastCharacter !== categoryName) {
