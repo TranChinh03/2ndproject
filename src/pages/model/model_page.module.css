@@ -96,3 +96,13 @@ label.label input[type="file"] {
   align-items: center;
   justify-content: center;
 }
+.saveBtn {
+  cursor: pointer;
+  border: 1px solid #1f52a1;
+  border-radius: 25px;
+  padding: 10px 18px;
+  margin-top: 48px;
+  color: white;
+  background: transparent;
+  display: inline-block;
+}

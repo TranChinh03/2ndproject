@@ -15,6 +15,16 @@ export const ModelPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   let scale = 2;
 
+  //down load
+  function download() {
+    var canvas = canvasRef.current;
+    var url = canvas.toDataURL("image/png");
+    var link = document.createElement("a");
+    link.download = "Image.png";
+    link.href = url;
+    link.click();
+  }
+
   //pick img
   function handleChange(e) {
     //
@@ -124,7 +134,11 @@ export const ModelPage = () => {
               />
               <span>Import new image</span>
             </label>
-            <button onClick={predict} className={styles.label}>
+            <button
+              onClick={predict}
+              disabled={isLoading ? true : false}
+              className={styles.label}
+            >
               Predict
             </button>
           </div>
@@ -147,6 +161,21 @@ export const ModelPage = () => {
         {isLoading ? <div className={styles.loading}>Loading...</div> : null}
 
         {renderErrorMessage()}
+        {isLoading || !selectedFile ? null : (
+          <button onClick={download} className={styles.saveBtn}>
+            Download
+          </button>
+        )}
+        {/* {isLoading || !selectedFile ? null : (
+          <FacebookShareButton
+            url={shareUrl}
+
+            quote={"Title or jo bhi aapko likhna ho"}
+            hashtag={"#portfolio..."}
+          >
+            <FacebookIcon size={40} round={true} />
+          </FacebookShareButton>
+        )} */}
       </div>
     </div>
   );
