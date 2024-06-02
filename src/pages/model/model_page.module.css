@@ -47,6 +47,10 @@
 .button:hover {
   background-color: #07d2f0;
 }
+.label:disabled {
+  background-color: #91f0ff;
+  cursor: not-allowed;
+}
 label.label input[type="file"] {
   position: absolute;
   top: -1000px;

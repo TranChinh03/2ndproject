@@ -256,12 +256,11 @@ const GamePage = () => {
       );
       ctx.fillStyle = colors.red;
       ctx.fillRect(0, 50, width, 100);
-      ctx.font = "16px Arial";
-      ctx.fillStyle = "#000000";
+      ctx.fillStyle = "#fff";
       ctx.fillText(
-        "Bạn đã thua. Sử dụng 'Có' để bắt đầu!",
-        width / 2 - 120,
-        100
+        "You lose! Use the YES hand sign to start!",
+        width / 2 - 200,
+        110
       );
       const image = letterImages["yes"];
       ctx.drawImage(image, 180, 180, 80, 80);
@@ -283,7 +282,7 @@ const GamePage = () => {
       ctx.fillStyle = "#fff";
       ctx.fillRect(width / 2 - 250, 37, 500, 100);
       ctx.fillStyle = "#000";
-      ctx.fillText("Use the YES hand sign to begin!", width / 2 - 200, 100);
+      ctx.fillText("Use the YES hand sign to start!", width / 2 - 200, 100);
       ctx.fillStyle = "#fff";
       const image = letterImages["yes"];
       ctx.drawImage(image, 220, 180, 80, 80);

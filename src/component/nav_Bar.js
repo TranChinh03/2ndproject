@@ -10,10 +10,28 @@ export const NavBar = () => {
       <NavLink to="/" className={styles.txtWeb}>
         Henzesture
       </NavLink>
-      <NavLink to="/about" className={styles.txtNav}>
+      <NavLink
+        to="/about"
+        className={({ isActive }) =>
+          isActive ? styles.activeTxt : styles.txtNav
+        }
+      >
         About us
       </NavLink>
-      <NavLink to="/game" className={styles.txtNav}>
+      <NavLink
+        to="/model"
+        className={({ isActive }) =>
+          isActive ? styles.activeTxt : styles.txtNav
+        }
+      >
+        Detect
+      </NavLink>
+      <NavLink
+        to="/game"
+        className={({ isActive }) =>
+          isActive ? styles.activeTxt : styles.txtNav
+        }
+      >
         Game
       </NavLink>
     </div>

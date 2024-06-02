@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import styles from "./model_page.module.css";
 import axios from "axios";
-import { drawRect } from "../../utilities/utilities";
+import { drawRect } from "../../utilities/draw_bbox";
 
 export const ModelPage = () => {
   const webcamRef = useRef(null);
@@ -37,7 +37,7 @@ export const ModelPage = () => {
         setSelectedImg(e.target.files[0]);
         setSelectedFile(img);
 
-        drawRect(img, 0, 0, 0, 0, "", scale, ctx);
+        ctx.drawImage(img, 0, 0, img.width * scale, img.height * scale);
       };
       img.src = event.target.result;
     };
@@ -63,15 +63,31 @@ export const ModelPage = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
         SetIsLoading(false);
-        drawRect(
+        if (
+          selectedFile.width * scale > 640 ||
+          selectedFile.height * scale > 640
+        )
+          scale = 0.5;
+        canvas.width = selectedFile.width * scale;
+        canvas.height = selectedFile.height * scale;
+        ctx.drawImage(
           selectedFile,
-          data[0].box[0],
-          data[0].box[1],
-          data[0].box[2],
-          data[0].box[3],
-          data[0].class_name,
-          scale,
-          ctx
+          0,
+          0,
+          selectedFile.width * scale,
+          selectedFile.height * scale
+        );
+        data.map((dt) =>
+          drawRect(
+            selectedFile,
+            dt.box[0],
+            dt.box[1],
+            dt.box[2],
+            dt.box[3],
+            dt.class_name,
+            scale,
+            ctx
+          )
         );
       }
     } catch (err) {

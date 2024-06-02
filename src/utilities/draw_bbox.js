@@ -16,8 +16,8 @@ export const drawRect = (img, x, y, h, w, label, scale, ctx) => {
   ctx.lineWidth = 3;
 
   ctx.beginPath();
-  ctx.clearRect(0, 0, img.width * scale, img.height * scale);
-  ctx.drawImage(img, 0, 0, img.width * scale, img.height * scale);
+  // ctx.clearRect(0, 0, img.width * scale, img.height * scale);
+  // ctx.drawImage(img, 0, 0, img.width * scale, img.height * scale);
   ctx.rect(
     left * scale,
     top * scale,
