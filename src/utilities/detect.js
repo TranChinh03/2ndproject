@@ -23,8 +23,6 @@ export class SLRdetect {
   }
 
   async init(callback) {
-    console.log("wc");
-
     await this.createGestureRecognizer();
     if (this.hasGetUserMedia()) {
       this.enablestartBtn = document.getElementById("startBtn");
