@@ -434,8 +434,14 @@ const GamePage = () => {
       gameBegin(ctx);
     });
     //
-  }, [1]);
-
+  }, []);
+  const constraints = {
+    video: {
+      facingMode: {
+        exact: "environment",
+      },
+    },
+  };
   return (
     <div className={styles.mainContainer}>
       <>

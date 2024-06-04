@@ -11,6 +11,14 @@ export const NavBar = () => {
         Henzesture
       </NavLink>
       <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? styles.activeTxt : styles.txtNav
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
         to="/about"
         className={({ isActive }) =>
           isActive ? styles.activeTxt : styles.txtNav
@@ -24,7 +32,7 @@ export const NavBar = () => {
           isActive ? styles.activeTxt : styles.txtNav
         }
       >
-        Detect
+        Model
       </NavLink>
       <NavLink
         to="/game"
