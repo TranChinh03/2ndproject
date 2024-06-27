@@ -1,0 +1,150 @@
+.mainContainer {
+  width: 100%;
+  height: 100vh;
+  background: url("../../assets/imgs/homeBg.png") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  /* background-color: yellow; */
+}
+
+.gameCanvas {
+  /* flex: 1; */
+  height: 90%;
+  position: absolute;
+  /* background-color: red; */
+  z-index: 2;
+}
+
+.startBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  background-color: #1c69db;
+  border-radius: 30px;
+  height: 62px;
+  width: 207px;
+  border: transparent;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.startBtn:hover {
+  background-color: #35aaff;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 17px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.liveView {
+  /* flex: 1; */
+  /* position: relative; */
+  /* display: flex;*/
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.webcam,
+.output_canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  /* background-color: pink; */
+  object-fit: contain;
+}
+
+.outputContainer {
+  position: absolute;
+  bottom: 100px; /* Adjust bottom spacing */
+  left: 200;
+  /* background-color: #1c69db; */
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gesture_output {
+  text-align: left;
+  color: white;
+  -webkit-text-stroke: 3px #0ef;
+  -webkit-text-fill-color: transparent;
+  font-size: 128px;
+}
+
+.game_statistics {
+  position: absolute;
+  bottom: 10px; /* Adjust bottom spacing */
+  right: 10px; /* Adjust right spacing */
+  text-align: right; /* Align text to the right */
+}
+.instructionsTxt {
+  color: white;
+  position: absolute;
+  z-index: 20;
+  top: 10%;
+}
+.mirrored-video {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg); /* Safari and Chrome compatibility */
+}
+.givenText {
+  font-size: 128px;
+  font-weight: 700;
+  color: #35aaff;
+  line-height: 0px;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.65em;
+  -webkit-text-stroke: 3px #0ef;
+  -webkit-text-fill-color: transparent;
+}
+.givenTxtContainer {
+  position: absolute;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  top: 20%;
+  border-radius: 50px;
+  height: fit-content;
+  padding-right: 40px;
+  padding-left: 40px;
+  /* flex-direction: row; */
+  align-items: center;
+  /* display: flex; */
+  justify-content: center;
+}
+.grid_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 20px;
+  height: 80%;
+  position: absolute;
+  left: 10px;
+}
+
+.grid_button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.bigContainer {
+  display: flex;
+}
+.imgHand {
+  height: 100px;
+}

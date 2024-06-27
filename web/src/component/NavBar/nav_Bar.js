@@ -43,6 +43,14 @@ export const NavBar = () => {
         Game
       </NavLink>
       <NavLink
+        to="/asl"
+        className={({ isActive }) =>
+          isActive ? styles.activeTxt : styles.txtNav
+        }
+      >
+        ASL
+      </NavLink>
+      <NavLink
         to="/dictionary"
         className={({ isActive }) =>
           isActive ? styles.activeTxt : styles.txtNav
