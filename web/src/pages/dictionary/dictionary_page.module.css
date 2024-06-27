@@ -1,0 +1,86 @@
+.mainContainer {
+  background-color: #06073e;
+  height: auto;
+  width: 95w;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+.element1 {
+  background-image: url("../../assets/imgs/aboutElement1.png");
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+.subContainer {
+  height: 100vh;
+  width: 100%;
+  color: white;
+  display: flex;
+}
+
+.contentContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+ 
+.searchContainer {
+  width: 100%;
+  flex: 0.1;
+  padding-top: 100px;
+}
+
+.videoListContainer {
+  width: 100%;
+  flex: 0.9;
+  display: flex;
+  justify-content: center;
+}
+
+.videoDisplay {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.displayBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.displayNone {
+  display: none;
+}
+
+.controllContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.button {
+  background-color: #ffffff;
+  border-radius: 30px;
+  height: 45px;
+  width: 150px;
+  border: transparent;
+  color: black;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 25px;
+  margin: 50px;
+}
+
+.button:hover {
+  color: white;
+  background-color: #1c69db;
+}

@@ -1,0 +1,12 @@
+.container {
+    margin-top: 50px;
+    height: 100%;
+    width: 90%;
+}
+
+.subContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
