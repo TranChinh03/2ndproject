@@ -6,14 +6,42 @@ import VideoList from '../../component/VideoList/video_list';
 export const DictionaryPage = () => {
     const [videos, setVideos] = useState([]);
     const [isLoading, SetIsLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(0);
     const [search, setSearch] = useState("")
     const [source, setSource] = useState("")
     const [show, setShow] = useState(false);
 
+    const fetchNextPage = () => {
+      const nextPage = currentPage + 1
+      setCurrentPage(nextPage);
+    }
+
+    const fetchPreviousPage = () => {
+      const previousPage = currentPage - 1
+      setCurrentPage(previousPage);
+    }
+
+    const handleSearch = async (event) => {
+      event.preventDefault();
+      if (search === "" || !search) return;
+      SetIsLoading(true)
+      try {
+        const response = await axios.get(`https://us-west-2.aws.data.mongodb-api.com/app/signlanguage-jwpqs/endpoint/searchVideos?searchVid=${search}`);
+        setVideos(response.data);
+        SetIsLoading(false)
+      }
+      catch (error) {
+        console.error("Error fetching data:", error);
+        SetIsLoading(false)
+      }
+    }
+
     const fetchData = async () => {
         SetIsLoading(true)
         try {
-            const response = await axios.get("https://us-west-2.aws.data.mongodb-api.com/app/signlanguage-jwpqs/endpoint/videoApi?start=0");
+          const start = (currentPage % 12) * 12;
+          console.log("Page hien tai: " + start)
+            const response = await axios.get(`https://us-west-2.aws.data.mongodb-api.com/app/signlanguage-jwpqs/endpoint/videoApi?start=${start}`);
             setVideos(response.data);
             SetIsLoading(false)
         } catch (error) {
@@ -24,7 +52,7 @@ export const DictionaryPage = () => {
 
     useEffect(() => {
         fetchData();
-      }, []);
+      }, [currentPage]);
 
       const HandleVideoClick = (url) => {
         const videoId = url.split('v=')[1];
@@ -38,7 +66,7 @@ export const DictionaryPage = () => {
         <div className={styles.subContainer}>
             <div className={styles.contentContainer}>
                 <div className={styles.searchContainer}>
-                    <form class="w-4/6 mx-auto">   
+                    <form onSubmit={handleSearch} class="w-4/6 mx-auto">   
                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -46,7 +74,7 @@ export const DictionaryPage = () => {
                                     <path stroke="#1c69db" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                 </svg>
                             </div>
-                            <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Phrases..." required />
+                            <input value={search} onChange={(e) => setSearch(e.target.value)} type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Phrases..." required />
                             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                         </div>
                     </form>
@@ -64,6 +92,12 @@ export const DictionaryPage = () => {
                         <VideoList videos={videos} onVideoClick={HandleVideoClick}/>
                     }
                 </div>
+                {!isLoading && search==="" && 
+                <div className={styles.controllContainer}>
+                    <button onClick={fetchPreviousPage} className={styles.button}>Previous</button>
+                    <button onClick={fetchNextPage} className={styles.button}>Next</button>
+                </div>
+                }
             </div>
         </div>
       </div>

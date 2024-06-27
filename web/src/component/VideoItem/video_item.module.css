@@ -7,6 +7,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.videoItem:hover {
+  transform: translateY(-5px);
+  background-color: #ffffff;
+  color: black;
+}
+
 .videoItem img {
     width: 100%;
     height: auto;

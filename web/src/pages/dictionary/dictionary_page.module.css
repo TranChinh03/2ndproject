@@ -60,3 +60,27 @@
 .displayNone {
   display: none;
 }
+
+.controllContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.button {
+  background-color: #ffffff;
+  border-radius: 30px;
+  height: 45px;
+  width: 150px;
+  border: transparent;
+  color: black;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 25px;
+  margin: 50px;
+}
+
+.button:hover {
+  color: white;
+  background-color: #1c69db;
+}
