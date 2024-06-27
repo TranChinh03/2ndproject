@@ -50,6 +50,14 @@ export const NavBar = () => {
       >
         ASL
       </NavLink>
+      <NavLink
+        to="/dictionary"
+        className={({ isActive }) =>
+          isActive ? styles.activeTxt : styles.txtNav
+        }
+      >
+        Dictionary
+      </NavLink>
     </div>
   );
 };
