@@ -35,20 +35,20 @@ export const NavBar = () => {
         Model
       </NavLink>
       <NavLink
-        to="/game"
-        className={({ isActive }) =>
-          isActive ? styles.activeTxt : styles.txtNav
-        }
-      >
-        Game
-      </NavLink>
-      <NavLink
         to="/asl"
         className={({ isActive }) =>
           isActive ? styles.activeTxt : styles.txtNav
         }
       >
         ASL
+      </NavLink>
+      <NavLink
+        to="/game"
+        className={({ isActive }) =>
+          isActive ? styles.activeTxt : styles.txtNav
+        }
+      >
+        Game
       </NavLink>
       <NavLink
         to="/dictionary"

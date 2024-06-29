@@ -18,8 +18,8 @@ function App() {
           <Route path="/" exact={true} element={<HomePage />} />
           <Route path="/about" exact={true} element={<AboutPage />} />
           <Route path="/model" exact={true} element={<ModelPage />} />
-          <Route path="/game" exact={true} element={<GamePage />} />
           <Route path="/asl" exact={true} element={<ASLPage />} />
+          <Route path="/game" exact={true} element={<GamePage />} />
           <Route path="/dictionary" exact={true} element={<DictionaryPage />} />
         </Routes>
       </Router>
